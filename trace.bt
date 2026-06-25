@@ -1,0 +1,40 @@
+tracepoint:syscalls:sys_exit_clone {
+  printf("%-20s\t%6d\t%ld\n", "sys_exit_clone", pid, args.ret);
+}
+
+tracepoint:syscalls:sys_exit_fork {
+  printf("%-20s\t%6d\t%ld\n", "sys_exit_vfork", pid, args.ret);
+}
+
+tracepoint:syscalls:sys_exit_vfork {
+  printf("%-20s\t%6d\t%ld\n", "sys_exit_vfork", pid, args.ret);
+}
+
+tracepoint:syscalls:sys_enter_execve {
+  printf("%-20s\t%6d\t%s\n", "sys_enter_execve", pid, str(args.filename));
+}
+
+tracepoint:syscalls:sys_exit_execve {
+  printf("%-20s\t%6d\t%ld\n", "sys_exit_execve", pid, args.ret);
+}
+
+tracepoint:syscalls:sys_enter_openat {
+  printf("%-20s\t%6d\t%d\t%s\t0x%x\t0x%x\n", "sys_enter_openat", pid,
+    args.dfd,
+    str(args.filename),
+    args.flags,
+    args.mode
+  );
+}
+
+tracepoint:syscalls:sys_exit_openat {
+  printf("%-20s\t%6d\t%ld\n", "sys_exit_openat", pid, args.ret);
+}
+
+tracepoint:syscalls:sys_enter_exit {
+  printf("%-20s\t%6d\t%d\n", "sys_enter_exit", pid, args.error_code);
+}
+
+tracepoint:syscalls:sys_enter_exit_group {
+  printf("%-20s\t%6d\t%d\n", "sys_enter_exit_group", pid, args.error_code);
+}

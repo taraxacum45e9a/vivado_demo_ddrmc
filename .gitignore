@@ -1,0 +1,7 @@
+.vscode
+.Xil
+*.jou
+*.log
+*.txt
+**/__pycache__
+project.*
